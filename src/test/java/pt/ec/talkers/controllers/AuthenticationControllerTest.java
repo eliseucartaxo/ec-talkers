@@ -57,53 +57,47 @@ public class AuthenticationControllerTest {
 		client = null;
 	}
 
-	// @Test
-	// public void authenticationWithInvalidCredencials() throws Exception {
-	// AuthenticationRequest authRequest = new AuthenticationRequest("johndoe",
-	// "johndoe");
-	//
-	// try {
-	// client.exchange("http://localhost:8080/auth/login", HttpMethod.POST,
-	// createRequestEntity(authRequest),
-	// Void.class);
-	// } catch (HttpClientErrorException e) {
-	// assertThat(e.getStatusCode(), is(HttpStatus.UNAUTHORIZED));
-	// }
-	// }
-	//
-	// @Test
-	// public void authenticationWithValidCredencials() throws Exception {
-	// AuthenticationRequest authRequest = new AuthenticationRequest("test",
-	// "abc123");
-	//
-	// try {
-	// ResponseEntity<AuthenticationResponse> responseEntity =
-	// client.exchange("http://localhost:8080/auth/login",
-	// HttpMethod.POST, createRequestEntity(authRequest),
-	// AuthenticationResponse.class);
-	//
-	// AuthenticationResponse authResponse = responseEntity.getBody();
-	//
-	// try {
-	// assertThat(responseEntity.getStatusCode(), is(HttpStatus.OK));
-	// } catch (Exception e) {
-	// fail("Should returned Http 400 : Ok");
-	// }
-	//
-	// try {
-	// String token = authResponse.getToken();
-	// assertEquals("Invalid username in token response",
-	// authRequest.getUsername(),
-	// tokenHandler.getUsernameFromToken(token));
-	// } catch (Exception e) {
-	// fail("Invalid username in token response");
-	// }
-	//
-	// } catch (HttpClientErrorException e) {
-	// fail("Should returned Http 400 : Ok");
-	//
-	// }
-	// }
+	@Test
+	public void authenticationWithInvalidCredencials() throws Exception {
+		AuthenticationRequest authRequest = new AuthenticationRequest("johndoe", "johndoe");
+
+		try {
+			client.exchange("http://localhost:8080/auth/login", HttpMethod.POST, buildRequestEntity(authRequest),
+					Void.class);
+		} catch (HttpClientErrorException e) {
+			assertThat(e.getStatusCode(), is(HttpStatus.UNAUTHORIZED));
+		}
+	}
+
+	@Test
+	public void authenticationWithValidCredencials() throws Exception {
+		AuthenticationRequest authRequest = new AuthenticationRequest("test", "abc123");
+
+		try {
+			ResponseEntity<AuthenticationResponse> responseEntity = client.exchange("http://localhost:8080/auth/login",
+					HttpMethod.POST, buildRequestEntity(authRequest), AuthenticationResponse.class);
+
+			AuthenticationResponse authResponse = responseEntity.getBody();
+
+			try {
+				assertThat(responseEntity.getStatusCode(), is(HttpStatus.OK));
+			} catch (Exception e) {
+				fail("Should returned Http 400 : Ok");
+			}
+
+			try {
+				String token = authResponse.getToken();
+				assertEquals("Invalid username in token response", authRequest.getUsername(),
+						tokenHandler.getUsernameFromToken(token));
+			} catch (Exception e) {
+				fail("Invalid username in token response");
+			}
+
+		} catch (HttpClientErrorException e) {
+			fail("Should returned Http 400 : Ok");
+
+		}
+	}
 
 	@Test
 	public void refreshToken() {
@@ -112,8 +106,7 @@ public class AuthenticationControllerTest {
 		try {
 			ResponseEntity<AuthenticationResponse> responseEntity = client.exchange(
 					"http://localhost:8080/auth/refresh", HttpMethod.GET,
-					buildRequestEntityWithoutBody(authenticationToken),
-					AuthenticationResponse.class);
+					buildRequestEntityWithoutBody(authenticationToken), AuthenticationResponse.class);
 
 			AuthenticationResponse authResponse = responseEntity.getBody();
 
