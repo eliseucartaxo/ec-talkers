@@ -1,0 +1,16 @@
+/bin/
+/target/
+/src/main/webapp
+/external/.sass-cache
+/external/bower_components
+/external/node
+/external/node_modules
+src/main/java/pt/nos/move/processes/data/tibco
+.settings/
+.idea/
+.classpath
+.project
+.factorypath
+/.apt_generated/
+.springBeans
+.tern-project
