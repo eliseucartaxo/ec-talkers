@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import pt.ec.talkers.domain.entities.TalkerUser;
-import pt.ec.talkers.domain.repositories.TalkerUserRepository;
+import pt.ec.talkers.domain.services.UserService;
 import pt.ec.talkers.security.model.factory.TalkerAuthenticatedBuilder;
 
 /**
@@ -20,11 +20,11 @@ import pt.ec.talkers.security.model.factory.TalkerAuthenticatedBuilder;
 @Service
 public class TalkerUserDetailsService implements UserDetailsService {
 	@Autowired
-	TalkerUserRepository repository;
+	private UserService userService;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		TalkerUser talkerUser = repository.findByUsername(username);
+		TalkerUser talkerUser = userService.getByUsername(username);
 		if (talkerUser == null) {
 			throw new UsernameNotFoundException(String.format("User [%s] not found", username));
 		}

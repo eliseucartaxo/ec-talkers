@@ -7,12 +7,13 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import pt.ec.talkers.config.AppProfiles;
-import pt.ec.talkers.domain.entities.TalkerUser;
+import pt.ec.talkers.domain.entities.TalkerRoom;
 
 /**
  * @author ecartaxo
+ *
  */
 @Profile(AppProfiles.DB_JPA)
-public interface TalkerUserRepository extends JpaRepository<TalkerUser, Long> {
-	public TalkerUser findByUsername(final String username);
+public interface TalkerRoomRepository extends JpaRepository<TalkerRoom, Long> {
+	public TalkerRoom findByName(final String name);
 }

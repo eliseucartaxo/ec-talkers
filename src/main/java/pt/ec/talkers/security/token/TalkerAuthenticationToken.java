@@ -21,6 +21,6 @@ public class TalkerAuthenticationToken extends UsernamePasswordAuthenticationTok
 
 	public String getToken() {
 		return token;
-	}
+	}	
 
 }

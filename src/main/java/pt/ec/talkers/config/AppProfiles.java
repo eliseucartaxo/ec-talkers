@@ -22,6 +22,6 @@ public final class AppProfiles {
 	/*
 	 * Database Profile
 	 */
-	public final static String DB_H2 = "h2";
+	public final static String DB_JPA = "jpa";
 	public final static String DB_MONGO = "mongo";
 }
