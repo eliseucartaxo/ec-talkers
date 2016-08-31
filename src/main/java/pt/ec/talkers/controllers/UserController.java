@@ -23,7 +23,8 @@ import pt.ec.talkers.domain.services.UserService;
  * @author ecartaxo
  *
  */
-@RestController("users")
+@RestController
+@RequestMapping("users")
 public class UserController {
 	@Autowired
 	private UserService userService;

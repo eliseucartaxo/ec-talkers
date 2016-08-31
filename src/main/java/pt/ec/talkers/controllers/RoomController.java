@@ -5,6 +5,12 @@ package pt.ec.talkers.controllers;
 
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
@@ -12,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import pt.ec.talkers.config.MessageDestinations;
 import pt.ec.talkers.domain.entities.TalkerRoom;
 import pt.ec.talkers.domain.entities.TalkerUser;
 import pt.ec.talkers.domain.services.RoomService;
@@ -33,6 +41,8 @@ import pt.ec.talkers.security.model.domain.TalkerAuthenticatedUser;
 @RestController
 @RequestMapping("rooms")
 public class RoomController {
+	@Autowired
+	private SimpMessagingTemplate messageTemplate;
 	@Autowired
 	private RoomService roomService;
 	@Autowired
@@ -82,6 +92,7 @@ public class RoomController {
 		UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		TalkerUser talkerUser = userService.getByUsername(user.getUsername());
 		roomService.addParticipant(roomName, talkerUser);
+		messageTemplate.convertAndSend(MessageDestinations.ROOM_USERS(roomName), user);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 
@@ -90,7 +101,9 @@ public class RoomController {
 			@AuthenticationPrincipal TalkerAuthenticatedUser user) {
 		TalkerUser talkerUser = userService.getByUsername(user.getUsername());
 		roomService.removeParticipant(roomName, talkerUser);
+		messageTemplate.convertAndSend(MessageDestinations.ROOM_USERS(roomName), user);
 		return new ResponseEntity<Void>(HttpStatus.OK);
+
 	}
 
 }
