@@ -10,9 +10,6 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 
 @Configuration
 public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
-	public static final String ENDPOINT = "/talker";
-	public static final String BROKER_TARGET = "/topic";
-	public static final String APP_TARGET = "/app";
 
 	/*
 	 * (non-Javadoc)
@@ -23,7 +20,7 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 	 */
 	@Override
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
-		registry.addEndpoint(ENDPOINT).withSockJS();
+		registry.addEndpoint(MessageDestinations.ENDPOINT).withSockJS();
 	}
 
 	/*
@@ -35,8 +32,8 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 	 */
 	@Override
 	public void configureMessageBroker(MessageBrokerRegistry registry) {
-		registry.enableSimpleBroker(BROKER_TARGET);
-		registry.setApplicationDestinationPrefixes(APP_TARGET);
+		registry.enableSimpleBroker(MessageDestinations.BROKER_TARGET);
+		registry.setApplicationDestinationPrefixes(MessageDestinations.APP_TARGET);
 	}
 
 }
