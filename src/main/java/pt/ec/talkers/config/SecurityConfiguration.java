@@ -56,24 +56,36 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		//@formatter:off
 		// FOR NOW - easy to test
-		http.csrf().disable();
-		//We are working with rest, so the session must be stateless, passing one token in all request
-		http.exceptionHandling().authenticationEntryPoint(this.unauthorizedEntryPoint).
-		and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		
-		http.authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-			.antMatchers("/auth/login/**").permitAll()
-			.anyRequest().authenticated();
-
+		http
+			.csrf().disable();
+		// //We are working with rest, so the session must be stateless, passing
+		// one token in all request
+		http
+			.exceptionHandling()
+				.authenticationEntryPoint(this.unauthorizedEntryPoint)
+			.and()
+			.sessionManagement()
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+		.and()
+			.authorizeRequests()
+				.antMatchers("/auth/**").permitAll()
+				.antMatchers("/rooms/**").authenticated()
+				.antMatchers("/messages/**").authenticated()
 		// Custom JWT based authentication
-		http.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
+		.and()
+			.addFilterBefore(authenticationTokenFilterBean(), UsernamePasswordAuthenticationFilter.class);
 		//@formatter:on
 
 	}
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		super.configure(web);
+		//@formatter:off
+		web.ignoring()
+			.antMatchers("/html/**")
+			.antMatchers("/js/**")
+			.antMatchers("/css/**");
+		//@formatter:on
 	}
 
 	@Override

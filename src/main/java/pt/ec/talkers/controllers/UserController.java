@@ -38,8 +38,15 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<TalkerUser> getUser(@PathVariable final Long userId) {
-		TalkerUser user = userService.getById(userId);
+	public ResponseEntity<TalkerUser> getUser(@PathVariable final Long id) {
+		TalkerUser user = userService.getById(id);
+
+		return new ResponseEntity<TalkerUser>(user, HttpStatus.OK);
+	}
+
+	@RequestMapping(path = "{username}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<TalkerUser> getUser(@PathVariable final String username) {
+		TalkerUser user = userService.getByUsername(username);
 
 		return new ResponseEntity<TalkerUser>(user, HttpStatus.OK);
 	}

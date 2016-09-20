@@ -3,13 +3,15 @@
  */
 package pt.ec.talkers.domain.services;
 
+import pt.ec.talkers.domain.entities.TalkerRoom;
+
 /**
  * @author ecartaxo
  *
  */
 public interface TalkerService<T> {
 
-	public void create(T entity);
+	public T create(T entity);
 
 	public void delete(T entity);
 

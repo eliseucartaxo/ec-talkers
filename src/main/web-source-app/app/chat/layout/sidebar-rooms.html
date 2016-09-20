@@ -1,0 +1,6 @@
+<ul class="nav nav-sidebar">
+  <li><a ui-sref="rooms.list.create">Create new Room</a></li>    
+</ul>
+<ul class="nav nav-sidebar" ng-repeat="room in vm.allRooms">
+  <li><a href="#" ui-sref="rooms.list.chat({roomId:room.id})">{{room.name}}</a></li>
+</ul>

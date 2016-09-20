@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import pt.ec.talkers.domain.BaseEntity;
 
 /**
@@ -27,6 +29,7 @@ public class TalkerUser extends BaseEntity {
 	private String username;
 
 	@Column(nullable = false)
+	@JsonIgnore
 	private String password;
 
 	@Column(nullable = false)

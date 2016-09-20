@@ -24,8 +24,8 @@ public class UserServiceJpa implements UserService {
 	private TalkerUserRepository userRepository;
 
 	@Override
-	public void create(TalkerUser entity) {
-		userRepository.save(entity);
+	public TalkerUser create(TalkerUser entity) {
+		return userRepository.save(entity);
 	}
 
 	@Override

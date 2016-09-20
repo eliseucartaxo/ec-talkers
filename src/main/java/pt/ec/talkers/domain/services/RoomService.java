@@ -3,6 +3,8 @@
  */
 package pt.ec.talkers.domain.services;
 
+import java.util.List;
+
 import pt.ec.talkers.domain.entities.TalkerRoom;
 import pt.ec.talkers.domain.entities.TalkerUser;
 
@@ -23,5 +25,7 @@ public interface RoomService extends TalkerService<TalkerRoom> {
 	 * @param name
 	 */
 	public void delete(final String name);
+
+	public List<TalkerRoom> getActiveRooms();
 
 }

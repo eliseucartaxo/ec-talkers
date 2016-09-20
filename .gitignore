@@ -2,10 +2,9 @@
 /target/
 /src/main/webapp
 /external/.sass-cache
-/external/bower_components
-/external/node
-/external/node_modules
-src/main/java/pt/nos/move/processes/data/tibco
+/bower_components
+/node
+/node_modules
 .settings/
 .idea/
 .classpath

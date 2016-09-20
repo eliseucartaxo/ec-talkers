@@ -1,0 +1,14 @@
+{
+	"folders":
+	[
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+        "SublimeGrunt": {
+            "gruntfile_paths": ["C:\\binDev\\workspace\\my_projects\\ec-talkers"]
+        }
+    }
+}
+

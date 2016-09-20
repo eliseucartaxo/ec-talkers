@@ -4,16 +4,13 @@
 package pt.ec.talkers.controllers;
 
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
-import static org.springframework.web.bind.annotation.RequestMethod.PUT;
-
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
+import java.util.List;
+
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -41,6 +38,8 @@ import pt.ec.talkers.security.model.domain.TalkerAuthenticatedUser;
 @RestController
 @RequestMapping("rooms")
 public class RoomController {
+	private static final Logger LOG = Logger.getLogger(RoomController.class);
+
 	@Autowired
 	private SimpMessagingTemplate messageTemplate;
 	@Autowired
@@ -49,27 +48,27 @@ public class RoomController {
 	private UserService userService;
 
 	@RequestMapping(method = POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Void> createRoom(@RequestBody TalkerRoom room) {
+	public ResponseEntity<TalkerRoom> createRoom(@RequestBody TalkerRoom room) {
 		UserDetails user = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		TalkerUser talkerUser = userService.getByUsername(user.getUsername());
+		TalkerRoom roomCreated = null;
 		try {
 			room.setOwner(talkerUser);
-			roomService.create(room);
+			roomCreated = roomService.create(room);
 		} catch (Exception e) {
-			e.printStackTrace();
+			LOG.error(e);
+			return new ResponseEntity<TalkerRoom>(roomCreated, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
-		return new ResponseEntity<Void>(HttpStatus.CREATED);
+		return new ResponseEntity<TalkerRoom>(roomCreated, HttpStatus.CREATED);
 	}
 
-	// @RequestMapping(path = "{id}", method = GET, produces =
-	// MediaType.APPLICATION_JSON_VALUE)
-	// public ResponseEntity<TalkerRoom> getRoomById(@PathVariable Long id) {
-	//
-	// TalkerRoom room = roomService.getById(id);
-	//
-	// return new ResponseEntity<TalkerRoom>(room, HttpStatus.OK);
-	// }
+	@RequestMapping(method = GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<List<TalkerRoom>> getActiveRooms() {
+		List<TalkerRoom> rooms = roomService.getActiveRooms();
+
+		return new ResponseEntity<List<TalkerRoom>>(rooms, HttpStatus.OK);
+	}
 
 	@RequestMapping(path = "{name}", method = GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<TalkerRoom> getRoomByName(@PathVariable String name) {

@@ -6,6 +6,7 @@ package pt.ec.talkers.controllers;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -43,7 +44,7 @@ public class AuthenticationController {
 	@Autowired
 	private TalkerTokenKeys tokenKeys;
 
-	@RequestMapping(path = "login", method = RequestMethod.POST)
+	@RequestMapping(path = "login", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<AuthenticationResponse> login(@RequestBody AuthenticationRequest request)
 			throws AuthenticationException {
 		Authentication authentication = this.authenticationManager

@@ -1,0 +1,1430 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"au",
+				"isAuthenticated"
+			],
+			[
+				"Auth",
+				"AuthService"
+			],
+			[
+				"mo",
+				"verbose_module	AngularJS"
+			],
+			[
+				"con",
+				"controller	AngularJS"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"ng-s",
+				"ng-show	AngularJS"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"fo",
+				"ng-form	AngularJS"
+			],
+			[
+				"re",
+				"required	Attr"
+			],
+			[
+				"lo",
+				"localStorage"
+			],
+			[
+				"user",
+				"userToken"
+			],
+			[
+				"ng-cl",
+				"ng-click	AngularJS"
+			],
+			[
+				"in",
+				"input	Tag"
+			],
+			[
+				"bower",
+				"bower_concat"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app/user/auth.service.js",
+			"settings":
+			{
+				"buffer_size": 1476,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/user/login/login.controller.js",
+			"settings":
+			{
+				"buffer_size": 693,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/user/user.service.js",
+			"settings":
+			{
+				"buffer_size": 1463,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "(function() {\n	'use strict';\n\n	angular.module('ec-talkers.user').config(configUserModule);\n\n	function configUserModule($stateProvider, $urlRouterProvider) {\n\n		//State config\n\n		$stateProvider			\n			.state(\"login\", {\n				url: \"/login\",\n				templateUrl: \"html/login.html\",\n				controller: 'LoginController',\n				controllerAs: 'logginCtrl'\n			})\n			.state(\"signup\", {\n				url: \"/signup\",\n				templateUrl: \"html/signup.html\",\n				controller: 'SignupController',\n				controllerAs: 'signupCtrl'\n			});\n	}\n\n	\n})();",
+			"file": "app/user/user.config.js",
+			"file_size": 528,
+			"file_write_time": 131178920740555279,
+			"settings":
+			{
+				"buffer_size": 508,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/navbar/navbar.controller.js",
+			"settings":
+			{
+				"buffer_size": 639,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/index.html",
+			"settings":
+			{
+				"buffer_size": 2038,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/chat/chat.config.js",
+			"settings":
+			{
+				"buffer_size": 1012,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/chat/layout/default-dashboard.html",
+			"settings":
+			{
+				"buffer_size": 58,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/chat/websockets.service.js",
+			"settings":
+			{
+				"buffer_size": 1075,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/binDev/workspace/my_projects/ec-talkers/bower_components/sockjs-client/dist/sockjs.js",
+			"settings":
+			{
+				"buffer_size": 365111,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/app.config.js",
+			"settings":
+			{
+				"buffer_size": 804,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/app.module.js",
+			"settings":
+			{
+				"buffer_size": 207,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "(function() {\n	'use strict';\n\n	angular.module('ec-talkers', [\n		'ui.router',\n		'ngResource',\n		//App Modules\n		'ec-talkers.widgets',\n		'ec-talkers.user',\n		'ec-talkers.navbar',\n		'ec-talkers.chat'\n	]);\n})();\n(function() {\n	'use strict';\n\n	angular.module('ec-talkers.chat', [\n		'ui.router',\n		'ec-talkers.room'\n	]);\n})();\n(function() {\n	'use strict';\n	/**\n	 * ec-talkers.room Module;\n	 *\n	 * Description\n	 */\n	angular.module('ec-talkers.room', []);\n})();\n(function () {\n   'use strict';\n   angular.module('ec-talkers.navbar',[]);\n})();\n(function() {\n	'use strict';\n\n	angular.module('ec-talkers.user', [\n		'ui.router'\n	]);\n})();\n(function () {\n'use strict';\n   \n   angular.module('ec-talkers.widgets', []);\n})();\n(function() {\n	'use strict';\n\n	angular.module('ec-talkers').config(configuration);\n\n	function configuration($stateProvider, $urlRouterProvider) {\n		//Defaults redirects and errors\n\n		$urlRouterProvider.otherwise(\"/\");\n\n		//State config\n\n		$stateProvider\n			.state(\"home\", {\n				url: \"/\"\n			});\n	}\n\n})();\n(function() {\n	'use strict';\n	angular.module('ec-talkers.chat').config(configChat);\n\n	function configChat($stateProvider, $urlRouterProvider) {\n		//State config\n\n		$stateProvider\n			.state('rooms', {\n				url: '/rooms',\n				templateUrl: 'html/chat.home.html',\n				abstract: true,\n			})\n			.state('rooms.list', {\n				url: '',\n				views: {\n					'sidebar': {\n						templateUrl: 'html/sidebar-rooms.html',\n						controller: 'SidebarController',\n						controllerAs: 'vm'\n					},\n					'dashboard': {\n						templateUrl: 'html/default-dashboard.html'\n					}\n				}\n			})\n			.state('rooms.list.create', {\n				url: '/{roomId}',\n				views: {\n					'dashboard@rooms': {\n						templateUrl: 'html/room-create.html',\n						controller: 'RoomCreateController',\n						controllerAs: 'vm'\n					}\n				}\n			})\n			.state('rooms.list.chat', {\n				url: '/chat/{roomId}',\n				views: {\n					'dashboard@rooms': {\n						templateUrl: 'html/room-chat.html',\n						controller: 'RoomChatController',\n						controllerAs: 'vm'\n					}\n				}\n			});\n	}\n})();\n(function() {\n	'use strict';\n	angular.module('ec-talkers.room').config(configRoom);\n\n	function configRoom() {\n\n	}\n})();\n(function() {\n	'use strict';\n\n	angular.module('ec-talkers.user').config(configUserModule);\n\n	function configUserModule($stateProvider, $urlRouterProvider) {\n\n		//State config\n\n		$stateProvider			\n			.state(\"login\", {\n				url: \"/login\",\n				templateUrl: \"html/login.html\",\n				controller: 'LoginController',\n				controllerAs: 'logginCtrl'\n			})\n			.state(\"signup\", {\n				url: \"/signup\",\n				templateUrl: \"html/signup.html\",\n				controller: 'SignupController',\n				controllerAs: 'signupCtrl'\n			});\n	}\n})();\n(function() {\n   'use strict';\n   angular.module('ec-talkers.room').factory('Room', Room);\n\n   function Room($resource) {\n      return $resource('rooms', [], {\n         'join': {\n            url: ':roomName/join',\n            method: 'PUT',\n            isArray: false\n         },\n         'leave': {\n            url: ':roomName/leave',\n            method: 'PUT',\n            isArray: false\n         }\n      });\n   }\n})();\n(function() {\n	'use strict';\n	angular.module('ec-talkers.chat').service('WebSocketService', WebSocketService);\n\n	function WebSocketService() {\n		function createSocket() {\n\n		}\n\n		function closeSocket() {\n\n		}\n\n		var service = {\n			createSocket: createSocket,\n			closeSocket: closeSocket\n		};\n\n		return service;\n	}\n})();\n(function() {\n	'use strict';\n\n	angular.module('ec-talkers.user').factory('AuthService', AuthService);\n\n	function AuthService(User, $http) {\n\n		var isAuthenticated = false;\n\n\n		function _saveUserCredentials(token, username, nickname) {\n			User.setUser(username, nickname);\n			isAuthenticated = true;\n\n			$http.defaults.headers.common.Authorization = token;\n\n		}\n\n		function _clearUserCredentials() {\n			User.setUser(undefined, undefined);\n			isAuthenticated = false;\n\n			$http.defaults.headers.common.Authorization = undefined;\n		}\n\n		function doLogin(username, password) {\n			User.getResources().login({\n					'username': username,\n					'password': password\n				}).$promise\n				.then(function(httpResponse) {\n					//Todo - get nickname\n					_saveUserCredentials(httpResponse.token, username, username);\n				})\n				.catch(function(httpResponse) {\n					alert(httpResponse.data.error + ' : ' + httpResponse.data.message);\n					_clearUserCredentials();\n				});\n		}\n\n		function doLogout() {\n			_clearUserCredentials();\n		}\n\n		function doRegister(user) {\n			User.getResources().create(user).$promise\n				.then(function(httpResponse) {\n					console.log('User created');\n				})\n				.catch(function(httpResponse) {\n					console.log('Error creating user' + httpResponse.data.message);\n				});\n		}\n\n		var service = {\n			doLogin: doLogin,\n			doLogout: doLogout,\n			doRegister: doRegister,\n			isAuthenticated: function() {\n				return isAuthenticated;\n			}\n		};\n\n		return service;\n\n	}\n\n})();\n(function() {\n   angular.module('ec-talkers.user').factory('User', User);\n\n   function User($resource) {\n      //Default user\n      var userInfo = {\n         username: '',\n         nickname: ''\n      };\n\n      //Resources to get info about user\n      var resources = $resource('Users', [], {\n         'login': {\n            url: 'auth/login',\n            method: 'POST',\n            isArray: false,\n            headers: {\n               'Content-Type': 'application/json'\n            }\n         },\n         'create': {\n            url: 'users',\n            method: 'POST',\n            isArray: false,\n            headers: {\n               'Content-Type': 'application/json'\n            }\n         },\n         'getByUsername': {\n            url: 'users/:username',\n            method: 'GET',\n            isArray: false,\n            headers: {\n               'Content-Type': 'application/json'\n            }\n         },\n         'getById': {\n            url: 'users/:id',\n            method: 'GET',\n            isArray: false,\n            headers: {\n               'Content-Type': 'application/json'\n            }\n         }\n      });\n\n\n      return {\n         getUser: function() {\n            return userInfo;\n         },\n         setUser: function(username, nickname) {\n            userInfo.username = username;\n            userInfo.nickname = nickname;\n         },\n         getResources: function() {\n            return resources;\n         }\n      };\n   }\n})();\n(function() {\n	'use strict';\n	angular.module('ec-talkers.chat').controller('HomeChatController', HomeChatController);\n\n	function HomeChatController() {\n		var vm = this;\n\n\n	}\n\n})();\n(function() {\n	'use strict';\n	angular.module('ec-talkers.chat').controller('SidebarController', SidebarController);\n\n	function SidebarController(Room) {\n		var vm = this;\n\n		vm.allRooms = [];\n\n		(function initController() {\n			fillRoomsList();\n		})();\n\n		function fillRoomsList() {\n			return Room.query().$promise.then(function(response) {\n				console.log('Getting Rooms');\n				vm.allRooms = response;\n			}).catch(function(response) {\n				console.log('Something wrong');\n			});\n		}\n	}\n})();\n(function() {\n	'use strict';\n\n	angular.module('ec-talkers.room').controller('RoomChatController', RoomChatController);\n\n	function RoomChatController() {\n\n	}\n})();\n(function() {\n	'use strict';\n	angular.module('ec-talkers.room').controller('RoomCreateController', RoomCreateController);\n\n	function RoomCreateController(Room, $stateParams) {\n		var vm = this;\n\n		vm.feedback = {\n			success: undefined,\n			message: ''\n		};\n\n		vm.doSave = save;\n\n		vm.room = {\n			name: '',\n			description: ''\n		};\n\n\n		function save() {\n			Room.$save(vm.room)\n				.then(function(response) {\n					vm.feedback.success = true;\n					vm.feedback.message = 'Room Created';\n					console.log('Room saved - OK');\n				})\n				.catch(function(response) {\n					vm.feedback.success = false;\n					vm.feedbacl.message = 'Oops, something wrong happening creating the room';\n					console.log('Room save - ERROR');\n				});\n		}\n\n	}\n})();\n(function() {\n   'use strict';\n   angular.module('ec-talkers.navbar').controller('NavBarController', NavBarController);\n\n   function NavBarController($state, AuthService, User) {\n      var vm = this;\n\n      vm.currentUser = function() {\n         return User.getUser();\n      };\n\n      vm.isAuthenticated = function() {\n         console.log('Verify is isAuthenticated : ' + AuthService.isAuthenticated());\n         return AuthService.isAuthenticated();\n      };\n\n      vm.logout = function() {\n         return doLogout();\n      };\n\n\n      function doLogout() {\n         AuthService.doLogout();\n         $state.go('home');\n      }\n   }\n})();\n(function() {\n	'use strict';\n	angular.module('ec-talkers.user').controller('LoginController', LoginController);\n\n	function LoginController($state, AuthService) {\n		var vm = this;\n\n		vm.user = {\n			username: 'test',\n			password: 'abc123'\n		};\n\n		vm.doLogin = doLogin;\n		vm.doLogout = doLogout;\n\n\n		(function initController() {\n			// reset login status\n			// console.log('Resetting controllers');\n			AuthService.doLogout();\n		})();\n\n		function doLogin() {\n			// console.log('doLogin');\n			AuthService.doLogin(vm.user.username, vm.user.password);\n			$state.go('rooms.list');\n		}\n\n		function doLogout() {\n			// console.log('doLogout');\n			AuthService.doLogout();\n			$state.go('home');\n		}\n	}\n})();\n(function() {\n	'use strict';\n	angular.module('ec-talkers.user').controller('SignupController', SignupController);\n\n\n	//Start ussing ngAnnotate -- SignupController.$inject = ['$log']\n	function SignupController($log, AuthService) {\n		var vm = this;\n\n		vm.register = doRegister;\n\n		vm.user = {\n			username: '',\n			email: '',\n			password: '',\n			nickname: ''\n		};\n\n		function doRegister() {\n			AuthService.doRegister(vm.user)\n				.then(function() {\n					//TODO notify\n				})\n				.catch(function() {\n					//TODO notify\n				});\n		}\n	}\n})();",
+			"file": "/C/binDev/workspace/my_projects/ec-talkers/src/main/webapp/js/internal.js",
+			"file_size": 10258,
+			"file_write_time": 131179170192758261,
+			"settings":
+			{
+				"buffer_size": 9775,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/chat/room/room-chat.html",
+			"settings":
+			{
+				"buffer_size": 2978,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/chat/room/room-chat.controller.js",
+			"settings":
+			{
+				"buffer_size": 239,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/chat/room/room-create.html",
+			"settings":
+			{
+				"buffer_size": 1796,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "(function() {\n	'use strict';\n	angular.module('ec-talkers.room').controller('RoomCreateController', RoomCreateController);\n\n	function RoomCreateController(RoomFactory, $stateParams) {\n		var vm = this;\n\n		vm.feedback = {\n			success: undefined,\n			message: ''\n		};\n\n		vm.doSave = save;\n\n		vm.room = {\n			name: '',\n			description: ''\n		};\n\n		\n		function save() {\n			RoomFactory.save(vm.room);\n		}\n	}\n})();",
+			"file": "app/chat/room/room-create.controller.js",
+			"file_size": 423,
+			"file_write_time": 131181603589151655,
+			"settings":
+			{
+				"buffer_size": 401,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/chat/layout/sidebar-rooms.html",
+			"settings":
+			{
+				"buffer_size": 252,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/chat/layout/sidebar.controller.js",
+			"settings":
+			{
+				"buffer_size": 351,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/chat/layout/chat.home.controller.js",
+			"settings":
+			{
+				"buffer_size": 180,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/chat/layout/chat.home.html",
+			"settings":
+			{
+				"buffer_size": 156,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/chat/chat.module.js",
+			"settings":
+			{
+				"buffer_size": 112,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/chat/room/room.module.js",
+			"settings":
+			{
+				"buffer_size": 132,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/chat/room/room.factory.js",
+			"settings":
+			{
+				"buffer_size": 927,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/binDev/workspace/my_projects/ec-talkers/Gruntfile.js",
+			"settings":
+			{
+				"buffer_size": 4087,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "app/chat/room/room.config.js",
+			"settings":
+			{
+				"buffer_size": 119,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 382.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"Grunt"
+			],
+			[
+				"gru",
+				"Grunt"
+			],
+			[
+				"grun",
+				"Grunt"
+			],
+			[
+				"grunt",
+				"Grunt"
+			],
+			[
+				" grunt default",
+				"Preferences: Grunt - Settings – Default"
+			],
+			[
+				"grut",
+				"Grunt"
+			],
+			[
+				"install p",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 472.0
+	},
+	"console":
+	{
+		"height": 307.0,
+		"history":
+		[
+			"grunt",
+			"cd",
+			"dir",
+			"ls",
+			"grunt",
+			"view.encoding();",
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/chat/room",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/user/login"
+	],
+	"file_history":
+	[
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/chat/room/room.service.js",
+		"/C/binDev/workspace/my_projects/ec-talkers/Gruntfile.js",
+		"/C/binDev/workspace/crm-wave/Wave/external/Gruntfile.js",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/chat/room/rooms.controller.js",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/user/chat/chat.home.html",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/user/user.service.js",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/user/user.module.js",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/chat/chat.module.js",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/app.config.js",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/chat/chat.config.js",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/chat/layout/rooms.controller.js",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/user/authentication.service.js",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/index.html",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/user/login/login.controller.js",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/navbar/navbar.html",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/user/chat/chat.module.js",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/chat/layout/rooms.html",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/chat/home/chat.home.controller.js",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/chat/layout/sidebar.controller.js",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/chat/layout/sidebar-rooms.html",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/chat/rooms.service.js",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/chat/layout/chat.home.html",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/navbar/navbar.controller.js",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/user/chat/chat.config.js",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/user/signup/signup.controller.js",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/user/signup/signup.html",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/user/login/login.html",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/widgets/widgets.module.js",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/widgets/match-to.directive.js",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/app.module.js",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/app/user/user.config.js",
+		"/C/Users/User01/AppData/Roaming/Sublime Text 3/Packages/Grunt/main.py",
+		"/C/Users/User01/AppData/Roaming/Sublime Text 3/Packages/Grunt/expose.js",
+		"/C/binDev/workspace/my_projects/ec-talkers/src/main/web-source-app/ec-talkers.sublime-project",
+		"/C/binDev/gray8_color_pac_by_gsw953onda-d5qkuid/previews,instructions,etc/instructions.txt",
+		"/C/binDev/eclipse/eclipse/eclipse.ini",
+		"/C/Program Files/Git/mingw64/etc/gitconfig",
+		"/C/Users/User01/AppData/Roaming/Sublime Text 3/Packages/Grunt/SublimeGrunt.sublime-settings",
+		"/C/Users/User01/.p2/pools.info",
+		"/C/Users/User01/.p2/pool/features/org.springframework.ide.eclipse.security.feature_3.8.0.201606301005-RELEASE/feature.properties",
+		"/C/binDev/workspace/dummy-tests/angular-sample-app-ui-route/app/main/app.config.js",
+		"/C/binDev/workspace/dummy-tests/angular-sample-app-ui-route/app/main/app.states.js",
+		"/C/Users/User01/AppData/Roaming/Sublime Text 3/Packages/JsFormat/Default (Windows).sublime-keymap",
+		"/C/binDev/workspace/ec-talkers/src/main/web-source-app/ec-talkers.sublime-project",
+		"/C/binDev/workspace/ec-talkers/src/main/web-source-app/app/user/login.controller.js",
+		"/C/binDev/workspace/ng-demos/modular/src/client/app/widgets/ccSidebar.js",
+		"/C/binDev/workspace/ng-demos/modular/src/client/app/widgets/ccSpinner.js",
+		"/C/binDev/workspace/ng-demos/modular/src/client/app/widgets/ccWidgetClose.js",
+		"/C/binDev/workspace/ng-demos/modular/src/client/app/widgets/ccWidgetHeader.js",
+		"/C/binDev/workspace/dummy-tests/secure-angularjs/src/main/webapp/home.html",
+		"/C/binDev/workspace/dummy-tests/secure-angularjs/src/main/webapp/login.html",
+		"/C/binDev/workspace/crm-wave/Wave/src/main/sourceapp/common/js/Services/ProcessesServices.js",
+		"/C/binDev/workspace/crm-wave-test/crm-wave/Wave/src/main/java/pt/nos/move/WaveApplication.java",
+		"/C/binDev/workspace/crm-wave/Wave/src/main/webapp/js/librariesBundle.js",
+		"/C/binDev/workspace/ec-talkers/Gruntfile.js",
+		"/C/binDev/workspace/crm-wave/Wave/external/bower_components/jquery/dist/jquery.js",
+		"/C/binDev/workspace/crm-wave-test/crm-wave/Wave/external/Gruntfile.js",
+		"/C/Users/User01/.ssh/id_rsa.pub",
+		"/C/binDev/workspace/crm-wave/.git/config",
+		"/C/binDev/workspace/crm-wave/Wave/pom.xml",
+		"/C/binDev/workspace/crm-wave/Wave/src/main/webapp/index.html",
+		"/C/binDev/workspace/crm-wave/Wave/external/bower_components/datatables.net/js/jquery.dataTables.js",
+		"/C/binDev/workspace/crm-wave/Wave/external/bower_components/angular-datatables/dist/angular-datatables.js",
+		"/C/binDev/workspace/crm-wave/Wave/external/bower_components/jquery/dist/core.js",
+		"/C/binDev/workspace/crm-wave/Wave/external/package.json",
+		"/C/binDev/workspace/crm-wave/Wave/external/bower.json",
+		"/C/binDev/workspace/crm-wave/Wave/external/bower_components/angular-translate/.bower.json",
+		"/C/binDev/workspace/crm-wave/Wave/external/bower_components/angular-tree-control/.bower.json",
+		"/C/binDev/workspace/crm-wave/Wave/out.log",
+		"/C/binDev/workspace/crm-wave/Wave/external/bower_components/angular-translate-loader-static-files/README.md",
+		"/C/binDev/workspace/crm-wave/Wave/external/bower_components/angular-translate-loader-static-files/bower.json",
+		"/C/binDev/workspace/crm-wave/Wave/external/bower_components/angular-translate-loader-static-files/package.json",
+		"/C/binDev/workspace/crm-wave/Wave/external/bower_components/angular-translate/README.md",
+		"/C/binDev/workspace/crm-wave/Wave/external/bower_components/angular-translate/bower.json",
+		"/C/binDev/workspace/dummy-tests/killrchat/src/main/webapp/index.html",
+		"/C/binDev/workspace/ec-talkers/src/main/webapp/js/internal.js",
+		"/C/binDev/workspace/crm-wave/Wave/src/main/sourceapp/app.js",
+		"/C/binDev/workspace/crm-wave/Wave/src/main/sourceapp/configuration/configuration.js",
+		"/C/binDev/workspace/ec-talkers/src/main/webapp/js/_lib.js",
+		"/C/binDev/workspace/ec-talkers/src/main/web-source-app/app/user/signup.controller.js",
+		"/C/binDev/workspace/dummy-tests/killrchat/src/main/webapp/views/fragments/chatHomePage.html",
+		"/C/binDev/workspace/dummy-tests/killrchat/src/main/webapp/views/login.html",
+		"/C/binDev/workspace/dummy-tests/killrchat/src/main/webapp/views/templates/chatWindow.html",
+		"/C/binDev/workspace/ec-talkers/src/main/web-source-app/app/app.module.js",
+		"/C/binDev/workspace/ec-talkers/src/main/web-source-app/app/user/user.module.js",
+		"/C/binDev/workspace/dummy-tests/killrchat/src/main/java/com/datastax/demo/killrchat/configuration/WebConfiguration.java",
+		"/C/binDev/workspace/dummy-tests/killrchat/src/main/java/com/datastax/demo/killrchat/configuration/SecurityConfiguration.java",
+		"/C/binDev/workspace/crm-wave/Wave/src/main/sourceapp/index.html",
+		"/C/binDev/workspace/ec-talkers/bower.json",
+		"/C/binDev/workspace/ec-talkers/package.json",
+		"/C/binDev/workspace/dummy-tests/killrchat/src/main/webapp/scripts/app.js",
+		"/C/binDev/workspace/crm-wave/Wave/src/main/sourceapp/login/login-user-info/login-user-info.controller.js",
+		"/C/binDev/workspace/crm-wave/Wave/src/main/sourceapp/login/login-authentication/login-authentication.factory.js",
+		"/C/binDev/workspace/dummy-tests/killrchat/src/main/webapp/scripts/controllers.js",
+		"/C/binDev/workspace/ec-talkers/src/main/webapp/js/_libs.js",
+		"/C/binDev/workspace/ec-talkers/src/main/#_test/gulpfile.js",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/C/binDev/workspace/ec-talkers/src/main/webapp/index.html",
+		"/C/binDev/workspace/ec-talkers/src/main/webapp/app/app.module.js",
+		"/C/binDev/workspace/ec-talkers/src/main/webapp/test/src/client/app/blocks/logger/logger.js",
+		"/C/binDev/workspace/ec-talkers/src/main/webapp/test/src/client/app/blocks/logger/logger.module.js",
+		"/C/binDev/workspace/ec-talkers/.gitignore",
+		"/C/binDev/workspace/ec-talkers/src/main/webapp/bower_components/angular/README.md",
+		"/C/binDev/workspace/ec-talkers/src/main/webapp/bower_components/angular/.bower.json",
+		"/C/binDev/workspace/ec-talkers/src/main/webapp/bower_components/angular-ui/README.md",
+		"/C/binDev/workspace/ec-talkers/src/main/webapp/bower_components/angular-ui/grunt.js",
+		"/C/binDev/workspace/ec-talkers/src/main/webapp/dist/js/_bower.js",
+		"/C/binDev/workspace/demo-emp-dep/external/Gruntfile.js",
+		"/C/binDev/workspace/ec-talkers/src/main/webapp/bower_components/angular/bower.json",
+		"/C/binDev/workspace/demo-emp-dep/src/main/sourceapp/app.js",
+		"/C/binDev/workspace/ec-talkers/src/main/sourceapp/app.js",
+		"/C/binDev/workspace/dummy-tests/killrchat/src/main/webapp/views/fragments/chatParticipants.html",
+		"/C/binDev/workspace/ec-talkers/src/main/sourceapp/index.html",
+		"/C/binDev/workspace/dummy-tests/killrchat/src/main/webapp/views/chat.html",
+		"/C/binDev/workspace/dummy-tests/angular-tests/angular-promises/app/app.js",
+		"/C/Users/User01/Downloads/A-small-practice.in",
+		"/C/binDev/workspace/counting-sheep/target/A-result.out",
+		"/C/Users/User01/.gitconfig",
+		"/C/binDev/eclipse/jee-neon/eclipse/http",
+		"/C/binDev/workspace/dummy-tests/spring-integration-samples/applications/cafe/cafe-jms/README.md",
+		"/C/binDev/workspace/dummy-tests/spring-integration-samples/applications/cafe/pom.xml",
+		"/C/binDev/workspace/dummy-tests/spring-integration-samples/applications/cafe/cafe-si/pom.xml",
+		"/C/binDev/workspace/dummy-tests/spring-integration-samples/applications/cafe/cafe-jms/pom.xml",
+		"/C/binDev/workspace/dummy-tests/spring-integration-samples/applications/cafe/cafe-si/src/main/resources/META-INF/spring/integration/cafeDemo-xml.xml",
+		"/C/binDev/workspace/dummy-tests/angular-tests/angular-promises/app/index.html",
+		"/C/binDev/workspace/dummy-tests/spring-integration-samples/intermediate/async-gateway/src/main/java/org/springframework/integration/samples/async/gateway/MathService.java",
+		"/C/binDev/workspace/dummy-tests/ng-admin/doc/Relationships.md",
+		"/C/binDev/workspace/dummy-tests/spring-integration-samples/intermediate/async-gateway/src/main/resources/META-INF/spring/integration/math-service-config.xml"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"initSocket",
+			"InboxFactory",
+			"app",
+			"');\n",
+			"room_form",
+			">\n",
+			"RoomCrudController",
+			"room-edit",
+			"RoomsController",
+			"isAuthenticated",
+			"nickname",
+			"userInfo",
+			"username",
+			"}\n",
+			"currentUser",
+			"SignupCtrl",
+			"right",
+			"userToken",
+			"ec-taskers.user",
+			"password",
+			"DataTable",
+			"dataTable",
+			"fn.Datatable",
+			"fn.Datatables",
+			"Datatables",
+			"datata",
+			"{\n",
+			"specVersion",
+			"(function(window) {'use strict';",
+			"_libs",
+			"paths.dest",
+			": ",
+			"dest",
+			"buildType",
+			"User",
+			"<label for=\"j_username\">Username</label>\n	<input type=\"login\" id=\"j_username\">\n	",
+			"global_path",
+			"EmpDept",
+			"EmpDeptBundle",
+			"                    \n",
+			"EmpDeptBundle",
+			"function",
+			")\n",
+			"comments",
+			"employer",
+			"bower",
+			"angular",
+			"code",
+			"{\n   \"userinfo_signing_alg_values_supported\" : [\n      \"none\",\n      \"HS256\",\n      \"HS384\",\n      \"HS512\",\n      \"RS256\",\n      \"RS384\",\n      \"RS512\"\n   ],\n   \"authorization_endpoint\" : \"https://auth.co.nos.pt/oauth2/authorize\",\n   \"grant_types_supported\" : [\n      \"authorization_code\",\n      \"implicit\",\n      \"hybrid\"\n   ],\n   \"issuer\" : \"https://auth.co.nos.pt\",\n   \"id_token_signing_alg_values_supported\" : [\n      \"none\",\n      \"HS256\",\n      \"HS384\",\n      \"HS512\",\n      \"RS256\",\n      \"RS384\",\n      \"RS512\"\n   ],\n   \"require_request_uri_registration\" : \"false\",\n   \"request_parameter_supported\" : \"true\",\n   \"request_uri_parameter_supported\" : \"true\",\n   \"token_endpoint\" : \"https://auth.co.nos.pt/oauth2/token\",\n   \"end_session_endpoint\" : \"https://auth.co.nos.pt/oauth2/logout\",\n   \"response_types_supported\" : [\n      \"code\",\n      \"id_token\",\n      \"id_token token\",\n      \"code id_token\",\n      \"code token\",\n      \"code id_token token\"\n   ],\n   \"subject_types_supported\" : [\n      \"public\"\n   ],\n   \"token_endpoint_auth_methods_supported\" : [\n      \"client_secret_post\",\n      \"client_secret_basic\"\n   ],\n   \"jwks_uri\" : \"https://auth.co.nos.pt/oauth2/jwks\",\n   \"userinfo_endpoint\" : \"https://auth.co.nos.pt/oauth2/userinfo\",\n   \"scopes_supported\" : [\n      \"openid\",\n      \"profile\",\n      \"email\",\n      \"address\",\n      \"phone\"\n   ],\n   \"acr_values_supported\" : [],\n   \"check_session_iframe\" : \"https://auth.co.nos.pt/oauth2/checksession\"\n}\n",
+			"issuer"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"dataTable",
+			"talker",
+			"talker_bundle",
+			"EmpDeptBundle",
+			"librariesBundle",
+			"employer"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 5,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/user/auth.service.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1476,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1080,
+								1080
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 60.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/user/login/login.controller.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 693,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								680,
+								680
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 103.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/user/user.service.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1463,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1463,
+								1463
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"tab_size": 3,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 348.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 19,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "app/user/user.config.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 508,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								502,
+								502
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "app/navbar/navbar.controller.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 639,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								530,
+								530
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"tab_size": 3,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "app/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2038,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1031,
+								1031
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 154.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "app/chat/chat.config.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1012,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								876,
+								876
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 206.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "app/chat/layout/default-dashboard.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 58,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								58,
+								58
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "app/chat/websockets.service.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1075,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								420,
+								420
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/C/binDev/workspace/my_projects/ec-talkers/bower_components/sockjs-client/dist/sockjs.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 365111,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1749.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "app/app.config.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 804,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								293,
+								293
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "app/app.module.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 207,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								207,
+								207
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "/C/binDev/workspace/my_projects/ec-talkers/src/main/webapp/js/internal.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9775,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9488,
+								9488
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 6245.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 24,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "app/chat/room/room-chat.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2978,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1144,
+								1144
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "app/chat/room/room-chat.controller.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 239,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								221,
+								221
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "app/chat/room/room-create.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1796,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1796,
+								1796
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "app/chat/room/room-create.controller.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 401,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								338,
+								338
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 20,
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "app/chat/layout/sidebar-rooms.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 252,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								252,
+								252
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "app/chat/layout/sidebar.controller.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 351,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								351,
+								351
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "app/chat/layout/chat.home.controller.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 180,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								180,
+								180
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 23,
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "app/chat/layout/chat.home.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 156,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								156,
+								156
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 21,
+					"file": "app/chat/chat.module.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 112,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								112,
+								112
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 22,
+					"file": "app/chat/room/room.module.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 132,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								119,
+								104
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 21,
+					"type": "text"
+				},
+				{
+					"buffer": 23,
+					"file": "app/chat/room/room.factory.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 927,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								882,
+								882
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 24,
+					"file": "/C/binDev/workspace/my_projects/ec-talkers/Gruntfile.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4087,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3107,
+								3107
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1206.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 22,
+					"type": "text"
+				},
+				{
+					"buffer": 25,
+					"file": "app/chat/room/room.config.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 119,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								110,
+								110
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScriptNext - ES6 Syntax/JavaScriptNext.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 25,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 187.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "ec-talkers.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"deleteDepartment"
+			]
+		],
+		"width": 616.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 295.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

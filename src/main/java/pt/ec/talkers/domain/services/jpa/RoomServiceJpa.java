@@ -3,6 +3,8 @@
  */
 package pt.ec.talkers.domain.services.jpa;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
@@ -24,8 +26,8 @@ public class RoomServiceJpa implements RoomService {
 	private TalkerRoomRepository roomRepository;
 
 	@Override
-	public void create(TalkerRoom entity) {
-		roomRepository.save(entity);
+	public TalkerRoom create(TalkerRoom entity) {
+		return roomRepository.save(entity);
 	}
 
 	@Override
@@ -74,6 +76,12 @@ public class RoomServiceJpa implements RoomService {
 			room.getParticipants().remove(user);
 			roomRepository.save(room);
 		}
+
+	}
+
+	@Override
+	public List<TalkerRoom> getActiveRooms() {
+		return roomRepository.findAll();
 
 	}
 
